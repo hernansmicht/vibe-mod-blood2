@@ -1,50 +1,65 @@
 'use client'
 
-import { useRouter } from "next/navigation"
-import { useCallback, useState, useEffect } from "react"
-import Button from '../components/Button'
-import ClickCount from '../components/ClickCount'
-import styles from '../styles/home.module.css'
+import { useState, useEffect } from 'react';
+import cases from '../lib/data/cases.json';
+import bloodPatterns from '../lib/data/bloodPatterns.json';
+import CrimeSceneDisplay from '../components/CrimeSceneDisplay';
+import PatternRecognitionPhase from '../components/PatternRecognitionPhase';
+import TimelineReconstructionPhase from '../components/TimelineReconstructionPhase';
+import DeductionPhase from '../components/DeductionPhase';
+import ResultDisplay from '../components/ResultDisplay';
+import FeedbackDisplay from '../components/FeedbackDisplay'; // Import the new component
 
-export default () => {
+// Define Game Phases
+enum GamePhase {
+  PatternRecognition = 'PATTERN_RECOGNITION',
+  TimelineReconstruction = 'TIMELINE_RECONSTRUCTION',
+  Deduction = 'DEDUCTION',
+  Result = 'RESULT',
+}
 
-  const [count, setCount] = useState(0)
-  const increment = useCallback(() => {
-    setCount((v) => v + 1)
-  }, [setCount])
+export default function Home() {
+  const [currentPhase, setCurrentPhase] = useState(GamePhase.PatternRecognition);
+  const [currentCase, setCurrentCase] = useState(cases[0]); // Load the first case
+  const [identifiedPatterns, setIdentifiedPatterns] = useState([]);
+  const [timelineEvents, setTimelineEvents] = useState([]);
+  const [playerAnswers, setPlayerAnswers] = useState([]);
+  const [feedback, setFeedback] = useState('');
 
-  useEffect(() => {
-    const r = setInterval(() => {
-      increment()
-    }, 1000)
 
-    return () => {
-      clearInterval(r)
-    }
-  }, [increment])
 
   return (
-    <main className={styles.main}>
-      <h1>Fast Refresh Demo</h1>
-      <p>
-        Fast Refresh is a Next.js feature that gives you instantaneous feedback
-        on edits made to your React components, without ever losing component
-        state.
-      </p>
-      <hr className={styles.hr} />
-      <div>
-        <p>
-          Auto incrementing value. The counter won't reset after edits or if
-          there are errors.
-        </p>
-        <p>Current value: {count}</p>
-      </div>
-      <hr className={styles.hr} />
-      <div>
-        <p>Component with state.</p>
-        <ClickCount />
-      </div>
-      <hr className={styles.hr} />
+    <main style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh', background: '#1a1a1a', color: '#e0e0e0' }}>
+      <CrimeSceneDisplay imageUrl={currentCase.sceneImage}>
+        {currentPhase === GamePhase.PatternRecognition && (
+          <PatternRecognitionPhase
+            currentCase={currentCase}
+            setIdentifiedPatterns={setIdentifiedPatterns}
+            setFeedback={setFeedback}
+            setCurrentPhase={setCurrentPhase}
+            identifiedPatterns={identifiedPatterns}
+            GamePhase={GamePhase}
+          />
+        )}
+        <FeedbackDisplay feedback={feedback} />
+        {currentPhase === GamePhase.TimelineReconstruction && (
+          <TimelineReconstructionPhase
+            currentCase={currentCase}
+            setTimelineEvents={setTimelineEvents}
+            setCurrentPhase={setCurrentPhase}
+            GamePhase={GamePhase}
+          />
+        )}
+        {currentPhase === GamePhase.Deduction && (
+          <DeductionPhase
+            currentCase={currentCase}
+            setPlayerAnswers={setPlayerAnswers}
+            setCurrentPhase={setCurrentPhase}
+            GamePhase={GamePhase}
+          />
+        )}
+        {currentPhase === GamePhase.Result && <ResultDisplay />}
+      </CrimeSceneDisplay>
     </main>
   );
 }

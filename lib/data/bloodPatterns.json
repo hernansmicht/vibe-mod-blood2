@@ -1,0 +1,50 @@
+[
+  {
+    "id": "passive_drops",
+    "name": "Passive Drops",
+    "visualClue": "Small, round, spaced dots",
+    "implication": "Blood dripped from a stationary position."
+  },
+  {
+    "id": "cast_off",
+    "name": "Cast-Off",
+    "visualClue": "Arced lines or dotted streaks",
+    "implication": "Came off a swinging object (e.g., weapon)."
+  },
+  {
+    "id": "impact_spatter",
+    "name": "Impact Spatter",
+    "visualClue": "Fine mist, scattered tiny droplets",
+    "implication": "Caused by blunt-force trauma."
+  },
+  {
+    "id": "swipe",
+    "name": "Swipe",
+    "visualClue": "Elongated smears with motion direction",
+    "implication": "Something bloody was dragged/moved."
+  },
+  {
+    "id": "wipe",
+    "name": "Wipe",
+    "visualClue": "Disturbed stains over blood",
+    "implication": "Someone tried to erase or manipulate evidence."
+  },
+  {
+    "id": "void",
+    "name": "Void",
+    "visualClue": "Clean area amid blood spray",
+    "implication": "An object or person blocked the pattern."
+  },
+  {
+    "id": "drip_trail",
+    "name": "Drip Trail",
+    "visualClue": "Linear path of drops",
+    "implication": "Victim or suspect moved while bleeding."
+  },
+  {
+    "id": "arterial_spray",
+    "name": "Arterial Spray",
+    "visualClue": "Pulsing arcs, heavy projection",
+    "implication": "Major artery struck—victim alive and moving."
+  }
+]

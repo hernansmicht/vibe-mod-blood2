@@ -1,0 +1,62 @@
+[
+  {
+    "caseId": "case_001",
+    "sceneImage": "/images_ref/crime_scene_ref.png",
+    "patternsInScene": [
+      {
+        "patternId": "impact_spatter_wall",
+        "type": "Impact Spatter",
+        "location": { "x": 600, "y": 200, "width": 150, "height": 100 },
+        "feedback": "Analysis confirms blunt-force trauma near the wall."
+      },
+      {
+        "patternId": "drip_trail_floor",
+        "type": "Drip Trail",
+        "location": { "x": 300, "y": 400, "width": 200, "height": 50 },
+        "feedback": "Subject moved while bleeding across the floor."
+      },
+      {
+        "patternId": "passive_drops_bed",
+        "type": "Passive Drops",
+        "location": { "x": 700, "y": 500, "width": 50, "height": 50 },
+        "feedback": "Blood dripped from a stationary position near the bed."
+      },
+      {
+        "patternId": "swipe_door",
+        "type": "Swipe",
+        "location": { "x": 100, "y": 250, "width": 50, "height": 150 },
+        "feedback": "Evidence of something bloody being dragged on the door."
+      },
+      {
+        "patternId": "void_chalk_outline",
+        "type": "Void",
+        "location": { "x": 350, "y": 250, "width": 300, "height": 300 },
+        "feedback": "An object or person blocked the pattern, creating a void."
+      }
+    ],
+    "timelineEvents": [
+      "An impact occurred near the wall, causing spatter.",
+      "A subject moved across the floor, leaving a drip trail.",
+      "Blood dripped from a stationary position near the bed.",
+      "Something bloody was dragged on the door.",
+      "An object or person blocked blood spray, creating a void where the chalk outline is."
+    ],
+    "deductionQuestions": [
+      {
+        "question": "What type of weapon was likely used?",
+        "options": ["Blunt", "Sharp", "Projectile"],
+        "correctAnswer": "Blunt"
+      },
+      {
+        "question": "Is there evidence of scene tampering?",
+        "options": ["Yes", "No"],
+        "correctAnswer": "Yes"
+      },
+      {
+        "question": "Was the victim upright or grounded when the major injury occurred?",
+        "options": ["Upright", "Grounded"],
+        "correctAnswer": "Grounded"
+      }
+    ]
+  }
+]
